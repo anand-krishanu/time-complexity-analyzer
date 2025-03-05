@@ -1,0 +1,93 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Main container */
+.container {
+  text-align: center;
+}
+
+/* Card UI */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+/* Heading */
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Upload Box */
+.upload-box {
+  border: 2px dashed #007bff;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.upload-box:hover {
+  background: #f0f8ff;
+}
+
+/* File Input (Hidden) */
+input[type="file"] {
+  display: none;
+}
+
+/* Upload Label */
+.upload-label {
+  display: block;
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Button */
+button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Result and Error Messages */
+.result {
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+}
+
+.error {
+  margin-top: 15px;
+  color: red;
+  font-weight: bold;
+}
