@@ -2,12 +2,15 @@ package com.anand.BACKEND.controller;
 
 import com.anand.BACKEND.service.ComplexityAnalyzer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -21,12 +24,18 @@ public class UploadFileController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile (@RequestParam("file")MultipartFile file) {
+    public ResponseEntity<Map<String, String>> uploadFile (@RequestParam("file")MultipartFile file) {
         try {
             List<String> lines = complexityAnalyzer.readFile(file);
             String complexity = complexityAnalyzer.calculateTimeComplexity(lines);
 
-            return ResponseEntity.ok("The time Complexity of the code is:  " + complexity);
+            String scrapedCode = String.join("\n", lines);
+
+            Map<String, String> response = new HashMap<>();
+            response.put("analysis", "The time complexity of the code is: " + complexity);
+            response.put("scrapedCode", scrapedCode);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
